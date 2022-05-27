@@ -1,14 +1,16 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree' "search  
 Plug 'itchyny/lightline.vim' "bar
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "autocomplete
-Plug 'morhetz/gruvbox' "theme
-Plug 'justinmk/vim-sneak' "Seach
-Plug 'chun-yang/auto-pairs' "autocomplete ()
-Plug 'ryanoasis/vim-devicons' "devicons
-Plug 'xuyuanp/nerdtree-git-plugin' "nerdtree icons
+Plug 'chun-yang/auto-pairs' "autocomplete simbols
+Plug 'morhetz/gruvbox' "theme 
+Plug 'xuyuanp/nerdtree-git-plugin' "nerdtree icons for Modified files
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "nerdtree highlight
+Plug 'ryanoasis/vim-devicons' "devicons
+Plug 'scrooloose/nerdtree' "sarch gui files pressing cntrl-a to open it  
+Plug 'ctrlpvim/ctrlp.vim' "search gui files control-p search
+Plug 'justinmk/vim-sneak' "Search values pressing s{char}{char}
+Plug 'tpope/vim-surround' "change values example->cs()<{}
 
 call plug#end()
 
@@ -23,7 +25,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 
 "cancel Highlights
 :nmap ` :noh<CR>
-set encoding=UTF-8
+
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
                 \ 'Staged'    :'✚',

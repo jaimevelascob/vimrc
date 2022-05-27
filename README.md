@@ -8,4 +8,5 @@ Personal configuration of vim
 4. Choose a font in https://www.nerdfonts.com/font-downloads. <br /> 
     Linux -> https://linuxconfig.org/how-to-install-and-manage-fonts-on-linuxi
     ![](/img/photo.png?raw=true "shot1")
-ENJOY😁👆!
+
+# ENJOY😁👆!
