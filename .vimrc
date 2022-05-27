@@ -15,8 +15,15 @@ Plug 'tpope/vim-surround' "change values example->cs()<{}
 call plug#end()
 
 "save and quit"
-:nmap q :q
-:nmap w :w
+:nmap q :q<CR>
+:nmap w :w<CR>
+
+" Faster Scrolling
+:nnoremap <C-j> 10<C-e> 
+:nnoremap <C-k> 10<C-y>
+
+"put ; on final line
+:nnoremap ; $a;<Esc>
 "nerd three"
 "Control a -> open"
 :nmap <C-a> :NERDTree<CR>
@@ -40,6 +47,46 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ }
 
 let g:sneak#label = 1 "command on search with s 
+
+set splitright
+function! OpenTerminal()
+  " move to right most buffer
+  " move to right most buffer
+  execute "normal \<C-l>"
+  execute "normal \<C-l>"
+  execute "normal \<C-l>"
+  execute "normal \<C-l>"
+
+  let bufNum = bufnr("%")
+  let bufType = getbufvar(bufNum, "&buftype", "not found")
+
+  if bufType == "terminal"
+    " close existing terminal
+    execute "q!"
+  else
+    " open terminal
+    execute "normal \<C-w>v"
+    execute "term"
+    execute "normal \<C-w>w"
+    execute "q"
+    " turn off numbers
+    execute "set nonu"
+    execute "set nornu"
+
+    " toggle insert on enter/exit
+    silent au BufLeave <buffer> stopinsert!
+    silent au BufWinEnter,WinEnter <buffer> startinsert!
+
+    " set maps inside terminal buffer
+    execute "tnoremap <buffer> <C-h> <C-\\><C-n><C-w><C-h>"
+    execute "tnoremap <buffer> <C-t> <C-\\><C-n>:q<CR>"
+    execute "tnoremap <buffer> <C-\\><C-\\> <C-\\><C-n>"
+
+    startinsert!
+  endif
+ endfunction
+nnoremap <C-t> :call OpenTerminal()<CR>
+
 
 set laststatus=2  "lightline set"
 syntax on
