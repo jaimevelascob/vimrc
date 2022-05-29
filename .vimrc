@@ -19,11 +19,17 @@ call plug#end()
 :nmap w :w<CR>
 
 " Faster Scrolling
-:nnoremap <C-j> 10<C-e> 
-:nnoremap <C-k> 10<C-y>
-
+:nnoremap J } 
+:nnoremap K {
 "put ; on final line
 :nnoremap ; $a;<Esc>
+:nnoremap z 0<Esc>
+:nnoremap Z A<Esc>
+:nnoremap y bvey
+:nnoremap <C-j> }
+:nnoremap <C-k> {
+:nnoremap L e
+:nnoremap H b
 "nerd three"
 "Control a -> open"
 :nmap <C-a> :NERDTree<CR>
@@ -31,7 +37,7 @@ call plug#end()
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 "cancel Highlights
-:nmap ` :noh<CR>
+:nmap + :noh<CR><Esc>
 
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
@@ -52,10 +58,6 @@ set splitright
 function! OpenTerminal()
   " move to right most buffer
   " move to right most buffer
-  execute "normal \<C-l>"
-  execute "normal \<C-l>"
-  execute "normal \<C-l>"
-  execute "normal \<C-l>"
 
   let bufNum = bufnr("%")
   let bufType = getbufvar(bufNum, "&buftype", "not found")
