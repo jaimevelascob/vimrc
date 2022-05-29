@@ -11,6 +11,7 @@ Plug 'scrooloose/nerdtree' "sarch gui files pressing cntrl-a to open it
 Plug 'ctrlpvim/ctrlp.vim' "search gui files control-p search
 Plug 'justinmk/vim-sneak' "Search values pressing s{char}{char}
 Plug 'tpope/vim-surround' "change values example->cs()<{}
+Plug 'tpope/vim-commentary' "comment with gcc 
 
 call plug#end()
 
@@ -21,15 +22,17 @@ call plug#end()
 " Faster Scrolling
 :nnoremap J } 
 :nnoremap K {
-"put ; on final line
-:nnoremap ; $a;<Esc>
-:nnoremap z 0<Esc>
-:nnoremap Z A<Esc>
-:nnoremap y bvey
 :nnoremap <C-j> }
 :nnoremap <C-k> {
+:nnoremap z 0<Esc> 
+:nnoremap Z A<Esc>
 :nnoremap L e
 :nnoremap H b
+"put ; on final line
+:nnoremap ; $a;<Esc>
+"copy word
+:nnoremap y bvey
+
 "nerd three"
 "Control a -> open"
 :nmap <C-a> :NERDTree<CR>
