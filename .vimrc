@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-
 Plug 'itchyny/lightline.vim' "bar
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "autocomplete
 Plug 'chun-yang/auto-pairs' "autocomplete simbols
@@ -19,6 +18,19 @@ call plug#end()
 :nmap q :q<CR>
 :nmap w :w<CR>
 
+" set list
+set listchars=eol:↓,space:·,trail:●,tab:→→,extends:>,precedes:<
+hi GroupA ctermbg=0.99 ctermfg=107 guibg=#87af57
+
+" match list
+match GroupA /\s\+$/
+":match GroupA / \t/
+:nnoremap <C-x> :set list<CR>
+
+"open and colors list
+"hi WarningMsg ctermbg=White ctermbg=red guifg=White guibg=Red gui=None
+set wrap
+
 " Faster Scrolling
 :nnoremap J } 
 :nnoremap K {
@@ -32,6 +44,8 @@ call plug#end()
 :nnoremap ; $a;<Esc>
 "copy word
 :nnoremap y bvey
+:nnoremap > >> 
+:nnoremap < << 
 
 "nerd three"
 "Control a -> open"
@@ -59,15 +73,13 @@ let g:sneak#label = 1 "command on search with s
 
 set splitright
 function! OpenTerminal()
-  " move to right most buffer
-  " move to right most buffer
 
   let bufNum = bufnr("%")
   let bufType = getbufvar(bufNum, "&buftype", "not found")
 
   if bufType == "terminal"
     " close existing terminal
-    execute "q!"
+	execute "q!"
   else
     " open terminal
     execute "normal \<C-w>v"
@@ -101,7 +113,7 @@ set number "see numbers"
 set tabstop=4
 set shiftwidth=4
 set autoindent
-set expandtab
+set cursorline
 set clipboard=unnamed "CTRL+V"
 set clipboard=unnamedplus "CNTRL+C"
 set numberwidth=2
