@@ -2,15 +2,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim' "bar
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "autocomplete
 Plug 'chun-yang/auto-pairs' "autocomplete simbols
-Plug 'morhetz/gruvbox' "theme 
+Plug 'morhetz/gruvbox' "theme
 Plug 'xuyuanp/nerdtree-git-plugin' "nerdtree icons for Modified files
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "nerdtree highlight
 Plug 'ryanoasis/vim-devicons' "devicons
-Plug 'scrooloose/nerdtree' "sarch gui files pressing cntrl-a to open it  
+Plug 'scrooloose/nerdtree' "sarch gui files pressing cntrl-a to open it
 Plug 'ctrlpvim/ctrlp.vim' "search gui files control-p search
 Plug 'justinmk/vim-sneak' "Search values pressing s{char}{char}
 Plug 'tpope/vim-surround' "change values example->cs()<{}
-Plug 'tpope/vim-commentary' "comment with gcc 
+Plug 'tpope/vim-commentary' "comment with gcc
 
 call plug#end()
 
@@ -20,13 +20,17 @@ call plug#end()
 
 " set list
 set listchars=eol:↓,space:·,trail:●,tab:→→,extends:>,precedes:<
-hi GroupA ctermbg=0.99 ctermfg=107 guibg=#87af57
 
 " match list
-match GroupA /\s\+$/
 ":match GroupA / \t/
-:nnoremap <C-x> :set list<CR>
+function! HighError()
+	execute "highlight GroupA ctermbg=0.99 ctermfg=107 guibg=#87af57"
+	execute "set list"
+endfunction
 
+:nnoremap <C-x> :call HighError()<CR>
+
+:nmap <C-y> :match GroupA /\s\+$/<CR>
 "open and colors list
 "hi WarningMsg ctermbg=White ctermbg=red guifg=White guibg=Red gui=None
 set wrap
@@ -46,6 +50,10 @@ set wrap
 :nnoremap y bvey
 :nnoremap > >> 
 :nnoremap < << 
+:nnoremap <C-w>< 10<C-w><
+:nnoremap <C-w>> 10<C-w>>
+:nnoremap <C-w>+ 10<C-w>+
+:nnoremap <C-w>- 10<C-w>-
 
 "nerd three"
 "Control a -> open"
@@ -106,6 +114,8 @@ nnoremap <C-t> :call OpenTerminal()<CR>
 
 
 set laststatus=2  "lightline set"
+
+"set splitbelow "split horizontal below"
 syntax on
 colorscheme gruvbox
 set background=dark
